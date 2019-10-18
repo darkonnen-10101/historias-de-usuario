@@ -1,10 +1,12 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_product, only: [:show, :edit, :update, :destroy, :sell]
+  before_action :authenticate_user!, only: [:new, :create]
+
 
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    @products = Product.where(enable: true)
   end
 
   # GET /products/1
@@ -40,11 +42,17 @@ class ProductsController < ApplicationController
 
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
-  def update
 
-    respond_to do |format|
+  def sell
+    @product.enable = false
+    @product.save
+    redirect_to root_path
+  end
+
+  def update
+      respond_to do |format|
       if @product.update(product_params)
-        format.html { redirect_to @product, notice: 'Product was successfully updated.' }
+        format.html { redirect_to @product, notice: 'Product was successfully buyed.' }
         format.json { render :show, status: :ok, location: @product }
       else
         format.html { render :edit }

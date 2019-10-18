@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_17_235930) do
+ActiveRecord::Schema.define(version: 2019_10_18_171332) do
 
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.string "description"
     t.string "price"
-    t.boolean "enable"
+    t.boolean "enable", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"

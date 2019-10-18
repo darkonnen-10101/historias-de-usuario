@@ -1,13 +1,25 @@
 <h1>My products</h1>
 
+<p>En venta</p>
+
 <% @products.reverse.each do |product|%>
 
-  <% if product.enable? %>
-  <p>En venta</p>
-    <%= product.name %>
-    <%= product.description %>
-    <%= product.price %>
- <% else %>
- <h1>Vendidos</h1>
+   <% if product.enable? %>
+      <%= product.name %>
+      <%= product.description %>
+      <%= product.price %>
+      <br>
+   <% end %>
+ <%end %>
 
-<%end %>
+ <p>Vendidos</p>
+ <% @products.reverse.each do |product|%>
+
+   <% if product.enable? == false %>
+     <%= product.name %>
+     <%= product.description %>
+     <%= product.price %>
+     <br>
+
+   <%end%>
+ <%end%>
