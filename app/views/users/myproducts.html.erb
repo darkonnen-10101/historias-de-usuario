@@ -1,0 +1,13 @@
+<h1>My products</h1>
+
+<% @products.reverse.each do |product|%>
+
+  <% if product.enable? %>
+  <p>En venta</p>
+    <%= product.name %>
+    <%= product.description %>
+    <%= product.price %>
+ <% else %>
+ <h1>Vendidos</h1>
+
+<%end %>
