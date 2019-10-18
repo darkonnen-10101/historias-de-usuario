@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
-  get 'products/:id', to: 'products#sell', as: 'sell'
+  get 'buy/:id', to: 'products#buy', as: 'buy'
 
   get 'users/search'
   get 'users/myproducts'

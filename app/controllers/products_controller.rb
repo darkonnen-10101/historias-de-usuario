@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy, :sell]
+  before_action :set_product, only: [:show, :edit, :update, :destroy, :buy]
   before_action :authenticate_user!, only: [:new, :create]
 
 
@@ -43,7 +43,7 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
 
-  def sell
+  def buy
     @product.enable = false
     @product.save
     redirect_to root_path
